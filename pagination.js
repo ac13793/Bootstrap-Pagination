@@ -14,8 +14,12 @@ $(".pagination .page-item").click(function () {
         $(this).addClass("active");
         if (1 == parseInt($(".pagination").find(".active .page-link").text())) {
             $(this).prev(".page-item").addClass("disabled");
-        } else if (10 == parseInt($(".pagination").find(".active .page-link").text())) {
+            $(".pagination .firstButton").addClass("disabled");
+            $(".pagination").find(".nextButton, .lastButton").removeClass("disabled");
+        } else if (oPagination.iTotalItemsPerPage == parseInt($(".pagination").find(".active .page-link").text())) {
             $(this).next(".page-item").addClass("disabled");
+            $(".pagination .lastButton").addClass("disabled");
+            $(".pagination").find(".firstButton, .prevButton").removeClass("disabled");
         } else {
             // Enable first, prev, next and last button
             $(".pagination").find(".firstButton, .prevButton, .nextButton, .lastButton").removeClass("disabled");
